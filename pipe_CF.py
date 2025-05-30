@@ -40,7 +40,7 @@ col5, col6 = st.columns([1, 2])
 with col5:
      st.subheader("Pipe L [mm]: :red[*]")
 with col6:
-    length_options = ['300 mm', '400 mm', '600 mm', '800 mm', '1000 mm', "Custom Value"]
+    length_options = ['300 mm', '400 mm', '500 mm', '600 mm', '800 mm', '1000 mm', "Custom Value"]
     selected_l = st.pills(
         label="Standard Lengths",
         options=length_options,
