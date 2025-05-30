@@ -1,7 +1,9 @@
 import streamlit as st
 import math
 
+
 st.set_page_config(page_title="Tape Length Calculation", layout="wide")
+st.image('pi_logo.png')
 st.title("Wrapping Tape Length Calculator")
 
 # === Диаметр трубы ===
