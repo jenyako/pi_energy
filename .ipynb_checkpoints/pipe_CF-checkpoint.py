@@ -96,6 +96,9 @@ with col8:
 if pipe_d is None or pipe_l is None or not width_list:
     st.stop()
 
+
+st.divider()
+
 st.header("Results", divider=True)
 
 for w in width_list:
