@@ -79,7 +79,7 @@ with col4:
 
     custom_width = None
     if "Custom Value" in selected_w:
-        custom_width = st.number_input("Input Width:", min_value=0.1, value=None, step=1, key="tape_w", label_visibility="collapsed")
+        custom_width = st.number_input("Input Width:", min_value=0.1, value=None, step=0.1, key="tape_w", label_visibility="collapsed")
 
     width_list = [float(w.replace('"', '')) for w in selected_w if isinstance(w, str) and w != "Custom Value"]
     if custom_width is not None:
