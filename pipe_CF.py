@@ -3,7 +3,7 @@ import math
 
 
 st.set_page_config(page_title="Tape Length Calculation", layout="wide")
-st.image('pi_logo.png')
+st.image('https://static.wixstatic.com/media/7a68aa_023f914caedb43e6b3377626233b3aaa~mv2.png/v1/fill/w_234,h_90,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/PI%20LOGO_PNG_transparency.png')
 st.title("Wrapping Tape Length Calculator")
 
 # === Диаметр трубы ===
