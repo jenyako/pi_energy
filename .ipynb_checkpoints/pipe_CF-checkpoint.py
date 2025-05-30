@@ -112,5 +112,5 @@ for w in width_list:
         
         #st.success(f"Tape {w:.0f}\" → {tape_length:.1f} mm")
 
-        st.metric(label=f"Tape {w:.0f}\"", value=f"{format(tape_length, ',.1f')} mm", delta=f"Tape {w:.0f}\"", label_visibility="collapsed", border=True)
+        st.metric(label=f"Tape {w:.0f}\"", value=f"{format(tape_length, ',.0f')} mm", delta=f"Tape {w:.0f}\"", label_visibility="collapsed", border=True)
 
