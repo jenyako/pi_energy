@@ -7,7 +7,7 @@ st.title("Wrapping Tape Length Calculator")
 # === Диаметр трубы ===
 col1, col2 = st.columns([1, 2])
 with col1:
-     st.subheader("Pipe D [in]:")
+     st.subheader("Pipe D [in]: :red[*]")
 with col2:
     diameter_options = ['4\"', '6\"', '8\"', '10\"', '12\"', "Custom Value"]
     selected_d = st.pills(
@@ -38,7 +38,7 @@ st.divider()
 
 col5, col6 = st.columns([1, 2])
 with col5:
-     st.subheader("Pipe L [mm]:")
+     st.subheader("Pipe L [mm]: :red[*]")
 with col6:
     length_options = ['300 mm', '400 mm', '600 mm', '800 mm', '1000 mm', "Custom Value"]
     selected_l = st.pills(
@@ -62,7 +62,7 @@ st.divider()
 # === Ширина ленты ===
 col3, col4 = st.columns([1, 2])
 with col3:
-    st.subheader("Tape Width [in]:")
+    st.subheader("Tape Width [in]: :red[*]")
 with col4:
     width_options = ['2\"', '4\"', '6\"', "Custom Value"]
     selected_w = st.pills(
@@ -88,12 +88,13 @@ st.divider()
 # === Перекрытие ===
 col7, col8 = st.columns([1, 2])
 with col7:
-     st.subheader("Tape Overlap [%]:")
+     st.subheader("Tape Overlap [%]: :red[*]")
 with col8:
     overlap = st.number_input("Input Tape Overlap:", min_value=0, max_value=90, value=50, step=10, key="overlap", label_visibility="collapsed")
 
 # === Проверка и расчёт ===
 if pipe_d is None or pipe_l is None or not width_list:
+    st.warning("Enter all Parameters")
     st.stop()
 
 
