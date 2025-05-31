@@ -15,12 +15,12 @@ with col2:
 
 st.divider()
 
-# === Number Of Stations ===
-col3, col4 = st.columns([1, 2])
-with col3:
-     st.subheader("Number of Stations: :red[*]")
-with col4:
-    station_num_options = [8,10,12,14,16,18,20,22,24, "Custom Value"]
+# === Number Of Shell Stations ===
+col5, col6 = st.columns([1, 2])
+with col5:
+     st.subheader("Number of Shell Stations: :red[*]")
+with col6:
+    station_num_options = [8,10,12,14,16,18,20,22,24,26, "Custom Value"]
     selected_n = st.pills(
         label="Standard Numbers",
         options=station_num_options,
@@ -38,7 +38,33 @@ with col4:
     else:
         stations_num = None
 
-if tank_d is None or stations_num is None:
+st.divider()
+
+
+# === Number Of Bottom Stations ===
+col3, col4 = st.columns([1, 2])
+with col3:
+     st.subheader("Number of Bottom Stations (on Radius): :red[*]")
+with col4:
+    bot_num_options = [2,3,4,5,6,7,8,9,10,11,12, "Custom Value"]
+    selected_b = st.pills(
+        label="Standard Numbers",
+        options=bot_num_options,
+        format_func=str,
+        selection_mode="single",
+        key="b_pills",
+        default=3,
+        label_visibility="collapsed"
+    )
+
+    if selected_b == "Custom Value":
+        bot_stations_num = st.number_input("Stations Number", min_value=2, value=None, step=2, key="bot_st_num", label_visibility="collapsed")
+    elif selected_b is not None:
+        bot_stations_num = float(selected_b)
+    else:
+        bot_stations_num = None
+
+if tank_d is None or stations_num is None or bot_stations_num is None:
     st.warning("Enter all Parameters")
     st.stop()
 
@@ -49,9 +75,19 @@ st.divider()
 
 tank_len = math.pi*tank_d
 max_dist = 32*304.8
-segment_len = tank_len / stations_num
+arc_len = tank_len / stations_num
+R = tank_d / 2
+theta = arc_len / R
+chord_len = 2 * R * math.sin(theta / 2)
 
-st.write("Distance Between Stations") 
-st.header(f"{segment_len:.0f} mm")
-if segment_len > max_dist:
+bot_st_distance = R / (bot_stations_num + 1)
+
+st.metric(label=f"Arc Between Stations", value=f"{format(arc_len, ',.0f')} mm", delta=f"Arc Between Shell Stations (L)", label_visibility="collapsed", border=True)
+
+if arc_len > max_dist:
     st.error('Distance is more than 32 ft', icon="🚨")
+
+st.metric(label=f"Chord Between Stations", value=f"{format(chord_len, ',.0f')} mm", delta=f"Chord Between Shell Stations (W)", label_visibility="collapsed", border=True)
+
+st.metric(label=f"Distance Between Stations (R)", value=f"{format(bot_st_distance, ',.0f')} mm", delta=f"Distance Between Bottom Stations (R)", label_visibility="collapsed", border=True)
+
