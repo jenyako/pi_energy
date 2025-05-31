@@ -46,7 +46,7 @@ col3, col4 = st.columns([1, 2])
 with col3:
      st.subheader("Number of Bottom Stations (on Radius): :red[*]")
 with col4:
-    bot_num_options = [2,3,4,5,6,7,8,9,10,11,12, "Custom Value"]
+    bot_num_options = [2,3,4,5,6,7,8,9,10,11,12,13,14,15, "Custom Value"]
     selected_b = st.pills(
         label="Standard Numbers",
         options=bot_num_options,
