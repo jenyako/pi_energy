@@ -80,7 +80,7 @@ R = tank_d / 2
 theta = arc_len / R
 chord_len = 2 * R * math.sin(theta / 2)
 
-bot_st_distance = R / (bot_stations_num + 1)
+bot_st_distance = R / (bot_stations_num - 1)
 
 st.metric(label=f"Arc Between Stations", value=f"{format(arc_len, ',.0f')} mm", delta=f"Arc Between Shell Stations (L)", label_visibility="collapsed", border=True)
 
